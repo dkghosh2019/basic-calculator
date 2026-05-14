@@ -31,34 +31,61 @@ buttonValue.forEach((button) => {
   });
 });
 
-// Custom calculation logic strictly for + and - without using dangerous eval()
+//  implements the PEMDAS order of operations (specifically MDAS
 function calculateExpression(expression) {
-  // Use a regular expression to split numbers and keep the + or - signs
-  const tokens = expression.match(/(\d+|\+|-|\*|\/)/g);
+  // Use the fixed regex to split the string into an array of tokens
+  let tokens = expression.match(/(\d+|[+\-*/])/g);
   
   if (!tokens) return 0;
 
-  // Start with the very first number in our sequence
-  let total = parseInt(tokens[0], 10);
+  // --- PASS 1: Handle Multiplication (*) and Division (/) ---
+  let i = 0;
+  while (i < tokens.length) {
+    if (tokens[i] === "*" || tokens[i] === "/") {
+      const operator = tokens[i];
+      const prevNum = parseFloat(tokens[i - 1]);
+      const nextNum = parseFloat(tokens[i + 1]);
 
-  // Loop through the remaining tokens to add or subtract
-  for (let i = 1; i < tokens.length; i += 2) {
-    const operator = tokens[i];
-    const nextNumber = parseInt(tokens[i + 1], 10);
+      // Error guard against incomplete inputs (like "5 *")
+      if (isNaN(nextNum)) break;
 
-    // Skip calculations if a number or operator is missing at the trailing edge
-    if (isNaN(nextNumber)) break; 
+      let partialResult = 0;
+      if (operator === "*") {
+        partialResult = prevNum * nextNum;
+      } else if (operator === "/") {
+        // Prevent crashing if dividing by zero
+        partialResult = nextNum === 0 ? "Error" : prevNum / nextNum;
+      }
+
+      // Replace the 3 processed tokens (num1, operator, num2) with the single result
+      tokens.splice(i - 1, 3, partialResult);
+      
+      // Since we shrunk the array, we do not increment 'i'. 
+      // It stays at the same index to check the next token.
+    } else {
+      i++;
+    }
+  }
+
+  // If division by zero occurred, bubble the error up
+  if (tokens.includes("Error")) return "Error";
+
+  // --- PASS 2: Handle Addition (+) and Subtraction (-) ---
+  let total = parseFloat(tokens[0]);
+
+  for (let j = 1; j < tokens.length; j += 2) {
+    const operator = tokens[j];
+    const nextNum = parseFloat(tokens[j + 1]);
+
+    if (isNaN(nextNum)) break;
 
     if (operator === "+") {
-      total += nextNumber;
+      total += nextNum;
     } else if (operator === "-") {
-      total -= nextNumber;
-    } else if (operator === "*") {
-      total *= nextNumber;
-    } else if (operator === "/") {
-      total /= nextNumber;
+      total -= nextNum;
     }
   }
 
   return total;
 }
+
