@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+  <meta charset="UTF-8">
+  <title>Simple Arithmetic Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-    <meta charset="UTF-8">
-    <title>Simple Arithmatic Calculator</title>
-
-</head>
-
 <body>
-    
-    <!-- The screen component utilizing your exact targeted selector -->
-<div id="number">0</div>
 
-<!-- The interface buttons -->
-<div class="calculator-keys">
-  <button>7</button><button>8</button><button>9</button><button>+</button></br>
-  <button>4</button><button>5</button><button>6</button><button>-</button></br>
-  <button>1</button><button>2</button><button>3</button><button>*</button></br>
-  <button>0</button><button>.</button><button>C</button><button>=</button><button>/</button></br>
-</div>
-<script src="script.js"></script>
+  <!-- Wrapper container required by your new CSS definitions -->
+  <div class="container">
+    <div class="heading">Calculator</div>
+    
+    <!-- Screen display element -->
+    <div id="number">0</div>
+
+    <!-- The Grid buttons with your exact classes applied -->
+    <div class="calculator-keys">
+      <button class="key-item">7</button>
+      <button class="key-item">8</button>
+      <button class="key-item">9</button>
+      <button class="key-item plus">+</button>
+
+      <button class="key-item">4</button>
+      <button class="key-item">5</button>
+      <button class="key-item">6</button>
+      <button class="key-item minus">-</button>
+
+      <button class="key-item">1</button>
+      <button class="key-item">2</button>
+      <button class="key-item">3</button>
+      <button class="key-item multiply">*</button>
+
+      <button class="key-item">0</button>
+      <button class="key-item">.</button>
+      <button class="key-item">C</button>
+      <button class="key-item divide">/</button>
+
+      <button class="key-item equal">=</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,107 @@
+/* Centers the entire calculator structure on your browser page */ 
+body { 
+  background-color: #f4f4f9; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  margin: 0; 
+  font-family: Arial, sans-serif; 
+}
+
+
+.heading { 
+  text-align: center; 
+  font-size: 1.6rem; 
+  color: #2c3e50; /* Changed from white to a dark slate gray for sharp contrast */
+  font-weight: bold;
+  padding: 10px 0px; 
+  font-family: 'Antonio', sans-serif; 
+}
+
+
+/* The wrapper container - cleaned up positioning conflict */
+.container { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  width: 270px; /* Increased slightly to account for grid paddings */
+  background-color: #4f9b9440; 
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: rgba(214, 238, 236, 0.25) 0px 30px 60px -12px inset, 
+              rgba(15, 161, 130, 0.3) 0px 18px 36px -18px inset; 
+}
+
+#number { 
+  background-color: #d5dae6; 
+  color: #1e222b; 
+  font-size: 2.5rem; 
+  font-family: 'Courier New', Courier, monospace; 
+  text-align: right; 
+  padding: 10px 15px; /* Slightly adjusted padding to balance the number alignment */
+  width: 100%; 
+  box-sizing: border-box; 
+  border-radius: 10px; 
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.15); 
+  margin-bottom: 15px; 
+  overflow-x: auto; 
+  white-space: nowrap; 
+}
+
+/* Optimized Grid for buttons */
+.calculator-keys { 
+  display: grid; 
+  width: 100%; 
+  /* Created 4 equal tracks with clean spacing gaps */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 8px;
+}
+
+/* Unified styling for your buttons */
+.key-item { 
+  padding: 15px 10px; 
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #ffffff; /* Clean white background for number keys */
+  transition: opacity 0.1s ease;
+}
+
+.key-item:hover {
+  opacity: 0.8; /* Subtle visual feedback on mouse hover */
+}
+
+/* Operator assignments using your color scheme */
+.plus { 
+  background-color: #F79F1F; 
+  color: white;
+  box-shadow: rgba(20, 20, 53, 0.25) 0px 30px 60px -12px inset, 
+              rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; 
+} 
+
+.minus { 
+  background-color: #A3CB38; 
+  color: white;
+} 
+
+.multiply { 
+  background-color: #D980FA; 
+  color: white;
+} 
+
+.divide { 
+  background-color: #FFC312; 
+  color: white;
+}
+
+/* Spans completely across all 4 columns cleanly */
+.equal { 
+  background-color: #29696b; 
+  color: white; 
+  grid-column: span 4; 
+}
