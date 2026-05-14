@@ -5,6 +5,9 @@ A clean, browser-based calculator built with **HTML**, **CSS**, and **JavaScript
 ## Project Preview
 
 The calculator displays a centered UI with number keys, arithmetic operator keys, a clear button, and an equals button.
+<p align="center">
+  <img src="images/calculator-preview.png" width="350" alt="Calculator Preview">
+</p>
 
 ## Features
 
